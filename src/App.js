@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
+import City from "./City";
 
 function App() {
   const apiKey = "df904bfc745763377b15eab90c5a74d0";
@@ -18,7 +19,7 @@ function App() {
       }
     }
     getWeatherApi();
-  }, []);
+  }, [search]);
   console.log(search);
 
   return (
@@ -28,10 +29,11 @@ function App() {
         <input
           className="form-control text-center bg-light mt-4 mx-5 border-2 border-danger"
           placeholder="enter your city"
-          onChange={(e) => setSearch(e.target.value)}
+          onClick={(e) => setSearch(e.target.value)}
           type="text"
         />
       </div>
+      {city && <City city={city} />}
     </div>
   );
 }
